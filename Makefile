@@ -7,7 +7,7 @@
 #
 ################################################################################
 # \copyright
-# Copyright 2018-2021, Cypress Semiconductor Corporation (an Infineon company)
+# Copyright 2018-2022, Cypress Semiconductor Corporation (an Infineon company)
 # SPDX-License-Identifier: Apache-2.0
 # 
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,6 +28,8 @@
 # Basic Configuration
 ################################################################################
 
+MTB_TYPE=COMBINED
+
 # Target board/hardware (BSP).
 # To change the target, it is recommended to use the Library manager
 # ('make modlibs' from command line), which will also update Eclipse IDE launch
@@ -35,12 +37,11 @@
 # valid URL exists in the application, run 'make getlibs' to fetch BSP contents
 # and update or regenerate launch configurations for your IDE.
 TARGET=KIT_XMC14_BOOT_001
-
 # Name of application (used to derive name of final linked file).
 #
 # If APPNAME is edited, ensure to update or regenerate launch
 # configurations for your IDE.
-APPNAME=mtb-example-xmc-ccu8-timer-sync-start
+APPNAME=mtb-example-xmc-ccu8-sync-start
 
 # Name of toolchain to use. Options include:
 #
@@ -79,12 +80,11 @@ VERBOSE=
 # ... then code in directories named COMPONENT_foo and COMPONENT_bar will be
 # added to the build
 #
-ifeq ($(TARGET), KIT_XMC14_BOOT_001)
-COMPONENTS=CUSTOM_DESIGN_MODUS
+COMPONENTS=
 
 # Like COMPONENTS, but disable optional code that was enabled by default.
-DISABLE_COMPONENTS=BSP_DESIGN_MODUS
-endif
+DISABLE_COMPONENTS=
+
 # By default the build system automatically looks in the Makefile's directory
 # tree for source code and builds it. The SOURCES variable can be used to
 # manually add source code to the build process from a location not searched
@@ -120,7 +120,7 @@ CXXFLAGS=
 ASFLAGS=
 
 # Additional / custom linker flags.
-LDFLAGS=
+LDFLAGS=--specs=nosys.specs
 
 # Additional / custom libraries to link in to the application.
 LDLIBS=
